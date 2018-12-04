@@ -27,8 +27,7 @@ const addUser = async (id) => {
       },
     },
   });
-  await entry.publish();
-  return entry;
+  return entry.publish();
 };
 
 const addFavouritePlatform = async (userId, platformId) => {
@@ -51,8 +50,7 @@ const addFavouritePlatform = async (userId, platformId) => {
     },
   });
   entry.fields.platform = platforms;
-  const updatedEntry = entry.update();
-  return updatedEntry;
+  return entry.update();
 };
 
 const deleteFavouritePlatform = async (userId, platformId) => {
