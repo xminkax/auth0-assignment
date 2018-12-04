@@ -20,15 +20,15 @@ const getEnvironment = async () => {
 
 const addUser = async (userId, platform) => {
   const environment = await getEnvironment();
-  debugger;
+
   const entry = await environment.createEntry(FAVOURITE_PLATFORM, {
     fields: {
       userId: {
-        'en-US': userId,
+        [LOCALE]: userId,
       },
       platform: {
-        'en-US': [platform],
-      }
+        [LOCALE]: [platform],
+      },
     },
   });
   return entry.publish();
@@ -48,15 +48,15 @@ const addFavouritePlatform = async (userId, platformId) => {
     'fields.userId': userId,
   });
 
-  if(entries.items.length === 0) {
-    return await addUser(userId, platform);
+  if (entries.items.length === 0) {
+    return addUser(userId, platform);
   }
 
   const entry = entries.items[0];
-  const platforms = entry.fields.platform ? entry.fields.platform : entry.fields.platform = { 'en-US': [] };
-  const find = platforms[LOCALE].find((item) => item.sys.id === platformId);
+  const platforms = entry.fields.platform ? entry.fields.platform : entry.fields.platform = { [LOCALE]: [] };
+  const find = platforms[LOCALE].find(item => item.sys.id === platformId);
   if (find) {
-    return {error: 'Item already exists'};
+    return { error: 'Item already exists' };
   }
   platforms[LOCALE].push({
     sys: {
@@ -110,7 +110,7 @@ const getFavouritePlatforms = async (userId) => {
     'fields.userId': userId,
   });
   if (!entries.items || !entries.items[0]) {
-    return {error: 'User doesn`t exist'};
+    return { error: 'User doesn`t exist' };
   }
   const platforms = entries.items[0].fields.platform[LOCALE];
   const favouritePlatformsId = platforms.map(({ sys }) => sys.id);
