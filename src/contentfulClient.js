@@ -18,24 +18,40 @@ const getEnvironment = async () => {
   return space.getEnvironment(ENVIRONMENT);
 };
 
-const addUser = async (id) => {
+const addUser = async (userId, platform) => {
   const environment = await getEnvironment();
+  debugger;
   const entry = await environment.createEntry(FAVOURITE_PLATFORM, {
     fields: {
       userId: {
-        'en-US': id,
+        'en-US': userId,
       },
+      platform: {
+        'en-US': [platform],
+      }
     },
   });
   return entry.publish();
 };
 
 const addFavouritePlatform = async (userId, platformId) => {
+  const platform = {
+    sys: {
+      id: platformId,
+      linkType: 'Entry',
+      type: 'Link',
+    },
+  };
   const environment = await getEnvironment();
   const entries = await environment.getEntries({
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
   });
+
+  if(entries.items.length === 0) {
+    return await addUser(userId, platform);
+  }
+
   const entry = entries.items[0];
   const platforms = entry.fields.platform ? entry.fields.platform : entry.fields.platform = { 'en-US': [] };
   const find = platforms[LOCALE].find((item) => item.sys.id === platformId);
@@ -116,7 +132,6 @@ const getPlatforms = async () => {
 
 
 module.exports = {
-  addUser,
   deleteFavouritePlatform,
   addFavouritePlatform,
   getFavouritePlatforms,
