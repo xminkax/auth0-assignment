@@ -20,13 +20,14 @@ const getEnvironment = async () => {
 
 const addUser = async (id) => {
   const environment = await getEnvironment();
-  return environment.createEntry(FAVOURITE_PLATFORM, {
+  const entry = await environment.createEntry(FAVOURITE_PLATFORM, {
     fields: {
       userId: {
         'en-US': id,
       },
     },
   });
+  return entry.publish();
 };
 
 const addFavouritePlatform = async (userId, platformId) => {
@@ -37,6 +38,10 @@ const addFavouritePlatform = async (userId, platformId) => {
   });
   const entry = entries.items[0];
   const platforms = entry.fields.platform ? entry.fields.platform : entry.fields.platform = { 'en-US': [] };
+  const find = platforms[LOCALE].find((item) => item.sys.id === platformId);
+  if (find) {
+    return {error: 'Item already exists'};
+  }
   platforms[LOCALE].push({
     sys: {
       id: platformId,
@@ -88,7 +93,11 @@ const getFavouritePlatforms = async (userId) => {
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
   });
-  const favouritePlatformsId = entries.items[0].fields.platform[LOCALE].map(({ sys }) => sys.id);
+  if (!entries.items || !entries.items[0]) {
+    return {error: 'User doesn`t exist'};
+  }
+  const platforms = entries.items[0].fields.platform[LOCALE];
+  const favouritePlatformsId = platforms.map(({ sys }) => sys.id);
 
   const favouritePlatforms = await environment.getEntries({
     content_type: PLATFORM,
