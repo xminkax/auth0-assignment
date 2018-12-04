@@ -6,11 +6,6 @@ const contentfulClient = require('./contentfulClient');
 const app = express();
 app.use(express.json());
 
-app.post('/user', async (req, res) => {
-  const entry = await contentfulClient.addUser(req.body.id);
-  res.send(JSON.stringify(entry));
-});
-
 app.post('/favourite-platform', async (req, res) => {
   const entry = await contentfulClient.addFavouritePlatform(req.body.userId, req.body.platformId);
   res.send(JSON.stringify(entry));
