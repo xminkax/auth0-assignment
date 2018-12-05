@@ -56,7 +56,8 @@ const addPlatform = async (userId, platformId) => {
     },
   });
   entry.fields.platform = platforms;
-  return entry.update();
+  await entry.update();
+  return entry;
 };
 
 const deletePlatform = async (userId, platformId) => {
@@ -68,23 +69,27 @@ const deletePlatform = async (userId, platformId) => {
   const entry = entries.items[0];
 
   if (!entry.fields.platform) {
-    return { message: 'Nothing to delete' };
+    throw new Exception(NOT_FOUND, 'Item not found');
   }
 
-  const platforms = [];
-  entry.fields.platform[LOCALE].forEach((item) => {
+  const existingPlatforms = entry.fields.platform[LOCALE];
+  const platformsAfterDelete = [];
+  existingPlatforms.forEach((item) => {
     if (item.sys.id !== platformId) {
-      platforms.push(item);
+      platformsAfterDelete.push(item);
     }
   });
 
-  if (platforms.length === 0) {
+  if (platformsAfterDelete.length === 0) {
     delete entry.fields.platform;
+  } else if (existingPlatforms.length === platformsAfterDelete.length) {
+    throw new Exception(NOT_FOUND, 'Item not found');
   } else {
-    entry.fields.platform[LOCALE] = platforms;
+    entry.fields.platform[LOCALE] = platformsAfterDelete;
   }
 
-  return entry.update();
+  await entry.update();
+  return entry;
 };
 
 const getPlatforms = async (userId) => {
