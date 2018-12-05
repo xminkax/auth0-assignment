@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 // Disabling 'no-console' as it's reasonable for this file to do some logging.
 const contentful = require('contentful-management');
+const error = require('./error');
 
 const LOCALE = 'en-US';
 const SPACE_ID = 'rq9f9siz5b6e';
@@ -53,10 +54,12 @@ const addFavouritePlatform = async (userId, platformId) => {
   }
 
   const entry = entries.items[0];
-  const platforms = entry.fields.platform ? entry.fields.platform : entry.fields.platform = { [LOCALE]: [] };
+  const platforms = entry.fields.platform ?
+    entry.fields.platform :
+    entry.fields.platform = { [LOCALE]: [] };
   const find = platforms[LOCALE].find(item => item.sys.id === platformId);
   if (find) {
-    return { error: 'Item already exists' };
+    throw new error.Exception(error.ERROR_TYPES.CONFLICT, 'Item already exists');
   }
   platforms[LOCALE].push({
     sys: {
@@ -110,7 +113,10 @@ const getFavouritePlatforms = async (userId) => {
     'fields.userId': userId,
   });
   if (!entries.items || !entries.items[0]) {
-    return { error: 'User doesn`t exist' };
+    throw new error.Exception(error.ERROR_TYPES.NOT_FOUND, 'User doesn\'t exist');
+  }
+  if (!entries.items[0].fields.platform) {
+    return [];
   }
   const platforms = entries.items[0].fields.platform[LOCALE];
   const favouritePlatformsId = platforms.map(({ sys }) => sys.id);
