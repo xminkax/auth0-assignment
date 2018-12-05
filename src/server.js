@@ -3,6 +3,7 @@
 const express = require('express');
 const contentfulClient = require('./contentfulClient');
 const error = require('./error');
+const paramsValidator = require('./paramsValidator');
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ const sendError = (err, res) => {
 
 app.post('/favourite-platform', async (req, res) => {
   try {
+    paramsValidator.favouritePlatform(req.body);
     const entry = await contentfulClient.addFavouritePlatform(req.body.userId, req.body.platformId);
     res.send(JSON.stringify(entry));
   } catch (err) {
@@ -24,6 +26,7 @@ app.post('/favourite-platform', async (req, res) => {
 
 app.delete('/favourite-platform', async (req, res) => {
   try {
+    paramsValidator.favouritePlatform(req.body);
     const entry = await contentfulClient.deleteFavouritePlatform(
       req.body.userId,
       req.body.platformId,
