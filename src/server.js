@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 // Disabling 'no-console' as it's reasonable for this file to do some logging.
 const express = require('express');
-const contentfulClient = require('./contentfulClient');
-const error = require('./error');
-const paramsValidator = require('./paramsValidator');
+const favouritePlatforms = require('./routes/favouritePlatforms');
+const platforms = require('./routes/platforms');
+const error = require('./errorExceptions');
+const validators = require('./validators');
 
 const app = express();
 app.use(express.json());
@@ -16,9 +17,9 @@ const sendError = (err, res) => {
 
 app.post('/favourite-platform', async (req, res) => {
   try {
-    paramsValidator.favouritePlatform(req.body);
-    const entry = await contentfulClient.addFavouritePlatform(req.body.userId, req.body.platformId);
-    res.send(JSON.stringify(entry));
+    validators.favouritePlatform(req.body);
+    const response = await favouritePlatforms.addPlatform(req.body.userId, req.body.platformId);
+    res.send(JSON.stringify(response));
   } catch (err) {
     sendError(err, res);
   }
@@ -26,12 +27,12 @@ app.post('/favourite-platform', async (req, res) => {
 
 app.delete('/favourite-platform', async (req, res) => {
   try {
-    paramsValidator.favouritePlatform(req.body);
-    const entry = await contentfulClient.deleteFavouritePlatform(
+    validators.favouritePlatform(req.body);
+    const response = await favouritePlatforms.deletePlatform(
       req.body.userId,
       req.body.platformId,
     );
-    res.send(JSON.stringify(entry));
+    res.send(JSON.stringify(response));
   } catch (err) {
     sendError(err, res);
   }
@@ -39,8 +40,8 @@ app.delete('/favourite-platform', async (req, res) => {
 
 app.get('/favourite-platforms/:userId', async (req, res) => {
   try {
-    const favouritePlatforms = await contentfulClient.getFavouritePlatforms(req.params.userId);
-    res.send(JSON.stringify(favouritePlatforms));
+    const response = await favouritePlatforms.getPlatforms(req.params.userId);
+    res.send(JSON.stringify(response));
   } catch (err) {
     sendError(err, res);
   }
@@ -48,8 +49,9 @@ app.get('/favourite-platforms/:userId', async (req, res) => {
 
 app.get('/platforms', async (req, res) => {
   try {
-    const platforms = await contentfulClient.getPlatforms();
-    res.send(JSON.stringify(platforms));
+    const response = await platforms.getPlatforms();
+
+    res.send(JSON.stringify(response));
   } catch (err) {
     sendError(err, res);
   }
