@@ -1,9 +1,4 @@
-const ERROR_TYPES = {
-  BAD_REQUEST: 'Bad Request',
-  INTERNAL_SERVER_ERROR: 'Internal Server Error',
-  NOT_FOUND: 'Not Found',
-  CONFLICT: 'Conflict',
-};
+const ERROR_TYPES = require('./errorTypes');
 
 function Exception(type, message) {
   this.type = type;
@@ -37,5 +32,4 @@ const httpHandler = (error) => {
 module.exports = {
   httpHandler,
   Exception,
-  ERROR_TYPES,
 };

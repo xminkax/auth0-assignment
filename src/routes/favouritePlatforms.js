@@ -1,26 +1,13 @@
-/* eslint-disable no-console */
-// Disabling 'no-console' as it's reasonable for this file to do some logging.
-const contentful = require('contentful-management');
-const error = require('./error');
+const contentfulClient = require('../contentfulClient');
+const util = require('./util');
+const { Exception } = require('../errorExceptions');
+const { CONFLICT, NOT_FOUND } = require('../errorExceptions/errorTypes');
+const { PLATFORM, FAVOURITE_PLATFORM } = require('./contentTypes');
 
-const LOCALE = 'en-US';
-const SPACE_ID = 'rq9f9siz5b6e';
-const FAVOURITE_PLATFORM = 'favouritePlatform';
-const PLATFORM = 'platform';
-const ACCESS_TOKEN = 'CFPAT-566889042ed4f8f07944d66086b3b5dd2dde9600c45cdfc2cc3fb9d937dfc4d1';
-const ENVIRONMENT = 'master';
-
-const client = contentful.createClient({
-  accessToken: ACCESS_TOKEN,
-});
-
-const getEnvironment = async () => {
-  const space = await client.getSpace(SPACE_ID);
-  return space.getEnvironment(ENVIRONMENT);
-};
+const { LOCALE } = contentfulClient;
 
 const addUser = async (userId, platform) => {
-  const environment = await getEnvironment();
+  const environment = await contentfulClient.getEnvironment();
 
   const entry = await environment.createEntry(FAVOURITE_PLATFORM, {
     fields: {
@@ -35,7 +22,7 @@ const addUser = async (userId, platform) => {
   return entry.publish();
 };
 
-const addFavouritePlatform = async (userId, platformId) => {
+const addPlatform = async (userId, platformId) => {
   const platform = {
     sys: {
       id: platformId,
@@ -43,7 +30,7 @@ const addFavouritePlatform = async (userId, platformId) => {
       type: 'Link',
     },
   };
-  const environment = await getEnvironment();
+  const environment = await contentfulClient.getEnvironment();
   const entries = await environment.getEntries({
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
@@ -59,7 +46,7 @@ const addFavouritePlatform = async (userId, platformId) => {
     entry.fields.platform = { [LOCALE]: [] };
   const find = platforms[LOCALE].find(item => item.sys.id === platformId);
   if (find) {
-    throw new error.Exception(error.ERROR_TYPES.CONFLICT, 'Item already exists');
+    throw new Exception(CONFLICT, 'Item already exists');
   }
   platforms[LOCALE].push({
     sys: {
@@ -72,8 +59,8 @@ const addFavouritePlatform = async (userId, platformId) => {
   return entry.update();
 };
 
-const deleteFavouritePlatform = async (userId, platformId) => {
-  const environment = await getEnvironment();
+const deletePlatform = async (userId, platformId) => {
+  const environment = await contentfulClient.getEnvironment();
   const entries = await environment.getEntries({
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
@@ -100,20 +87,14 @@ const deleteFavouritePlatform = async (userId, platformId) => {
   return entry.update();
 };
 
-const mapPlatform = ({ fields, sys }) => {
-  const { title, imageName } = fields;
-  const { id } = sys;
-  return { title: title[LOCALE], imageName: imageName[LOCALE], id };
-};
-
-const getFavouritePlatforms = async (userId) => {
-  const environment = await getEnvironment();
+const getPlatforms = async (userId) => {
+  const environment = await contentfulClient.getEnvironment();
   const entries = await environment.getEntries({
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
   });
   if (!entries.items || !entries.items[0]) {
-    throw new error.Exception(error.ERROR_TYPES.NOT_FOUND, 'User doesn\'t exist');
+    throw new Exception(NOT_FOUND, 'User doesn\'t exist');
   }
   if (!entries.items[0].fields.platform) {
     return [];
@@ -125,21 +106,12 @@ const getFavouritePlatforms = async (userId) => {
     content_type: PLATFORM,
     'sys.id[in]': favouritePlatformsId.join(','),
   });
-  return favouritePlatforms.items.map(mapPlatform);
+  const mapPlatformWithLocale = util.mapPlatform(LOCALE);
+  return favouritePlatforms.items.map(mapPlatformWithLocale);
 };
-
-const getPlatforms = async () => {
-  const environment = await getEnvironment();
-  const entries = await environment.getEntries({
-    content_type: PLATFORM,
-  });
-  return entries.items.map(mapPlatform);
-};
-
 
 module.exports = {
-  deleteFavouritePlatform,
-  addFavouritePlatform,
-  getFavouritePlatforms,
+  deletePlatform,
+  addPlatform,
   getPlatforms,
 };
