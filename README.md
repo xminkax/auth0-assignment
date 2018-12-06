@@ -2,7 +2,12 @@
 ## Install
 - `npm install`
 
-## Additional commands
+## Run server and client
+from root directory
+- `npm run server`
+- `npm run client`
+
+## Following commands to run from server/client folders
 - `npm lint`
 - `npm test`
 
