@@ -21,6 +21,7 @@
   },
   "proxy": "http://localhost:4000",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.6.2"
   },
   "setupFiles": [

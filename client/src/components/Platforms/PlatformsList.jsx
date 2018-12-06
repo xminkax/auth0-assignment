@@ -5,6 +5,9 @@ import PlatformItem from './PlatformItem';
 const PlatformsList = ({ platforms }) => (
   <div>
     {
+      platforms.length === 0 && <div>Not found</div>
+    }
+    {
         platforms && platforms.length > 0 &&
         platforms.map(
           platform => (
