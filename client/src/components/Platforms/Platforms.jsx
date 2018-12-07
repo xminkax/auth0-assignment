@@ -1,5 +1,5 @@
 import React from 'react';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 import PlatformsList from './PlatformsList';
 import Search from '../Search';
 import filter from './filter';
@@ -14,7 +14,8 @@ class Platforms extends React.Component {
     };
 
     this.onSearch = this.onSearch.bind(this);
-    this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
+    // in the case we would have huge list of platforms or getting data from the server debounce would be useful to prevent to call search too often /* eslint-disable max-len */
+    // this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
   }
 
   async componentDidMount() {
