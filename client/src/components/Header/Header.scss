@@ -1,0 +1,40 @@
+.menu {
+  margin-top: 41.5px;
+  margin-bottom: 41.5px;
+  display:flex;
+  flex-direction: row;
+  width: calc(100% - 266px);
+  list-style: none;
+}
+
+.header {
+  background-color: rgba(0,0,0,.99);
+}
+
+.container {
+  width:auto;
+  max-width: 1016px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+}
+
+li {
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+span {
+  color: #bfbfbf;
+}
+
+.container:before {
+  content: " ";
+  display: table;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+}
