@@ -1,7 +1,4 @@
 import React from 'react';
-
-const Footer = () => (
-  <div>Footer</div>
-);
+import { Footer } from '@auth0/styleguide-react-components';
 
 export default Footer;
