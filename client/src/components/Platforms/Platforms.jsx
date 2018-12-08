@@ -1,5 +1,4 @@
 import React from 'react';
-import debounce from 'lodash.debounce';
 import PlatformsList from './PlatformsList';
 import Search from '../Search';
 import filter from './filter';
@@ -14,7 +13,7 @@ class Platforms extends React.Component {
     };
 
     this.onSearch = this.onSearch.bind(this);
-    this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
+    // this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
   }
 
   async componentDidMount() {
