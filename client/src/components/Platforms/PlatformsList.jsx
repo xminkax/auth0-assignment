@@ -5,7 +5,7 @@ import PlatformItem from './PlatformItem';
 const PlatformsList = ({ platforms }) => (
   <div>
     {
-      platforms.length === 0 && <div>Not found</div>
+      platforms.length === 0 && <div>No records</div>
     }
     {
         platforms && platforms.length > 0 &&
