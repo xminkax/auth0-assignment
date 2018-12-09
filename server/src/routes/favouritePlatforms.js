@@ -98,10 +98,7 @@ const getPlatforms = async (userId) => {
     content_type: FAVOURITE_PLATFORM,
     'fields.userId': userId,
   });
-  if (!entries.items || !entries.items[0]) {
-    throw new Exception(NOT_FOUND, 'User doesn\'t exist');
-  }
-  if (!entries.items[0].fields.platform) {
+  if (!entries.items || !entries.items[0] || !entries.items[0].fields.platform) {
     return [];
   }
   const platforms = entries.items[0].fields.platform[LOCALE];

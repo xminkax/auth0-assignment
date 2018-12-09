@@ -1,5 +1,5 @@
-import history from '../history';
 import auth0 from 'auth0-js';
+import history from '../history';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth {
@@ -12,7 +12,7 @@ export default class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid',
   });
 
   constructor() {
@@ -23,6 +23,7 @@ export default class Auth {
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getIdToken = this.getIdToken.bind(this);
     this.renewSession = this.renewSession.bind(this);
+    this.getProfile = this.getProfile.bind(this);
   }
 
   login() {
@@ -54,13 +55,12 @@ export default class Auth {
     localStorage.setItem('isLoggedIn', 'true');
 
     // Set the time that the access token will expire at
-    let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
-    debugger;
+    const expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+    console.log(expiresAt);
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
 
-    // navigate to the home route
     history.replace('/');
   }
 
@@ -92,7 +92,16 @@ export default class Auth {
   isAuthenticated() {
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = this.expiresAt;
+    const { expiresAt } = this;
     return new Date().getTime() < expiresAt;
+  }
+
+  getProfile(cb) {
+    this.auth0.client.userInfo(this.accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(profile, err);
+    });
   }
 }

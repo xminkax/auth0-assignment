@@ -7,5 +7,5 @@ const routes = makeMainRoutes();
 
 ReactDOM.render(
   routes,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

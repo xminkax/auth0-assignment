@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Header = ({auth, login, logout}) => (
+const Header = ({ isAuth, login, logout }) => (
   <div>
     <header>
       {
-        !auth() && (
+        !isAuth && (
         <button onClick={login}>
           Log In
         </button>)
       }
       {
-        auth() && (
+        isAuth && (
           <button onClick={logout}>
             Log out
           </button>)
@@ -20,3 +21,10 @@ const Header = ({auth, login, logout}) => (
 );
 
 export default Header;
+
+Header.propTypes = {
+  login: PropTypes.func.isRequired, // eslint-disable-line react/forbid-prop-types
+  logout: PropTypes.func.isRequired, // eslint-disable-line react/forbid-prop-types
+  isAuth: PropTypes.bool.isRequired, // eslint-disable-line react/forbid-prop-types
+};
+
