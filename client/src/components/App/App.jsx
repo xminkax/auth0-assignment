@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Platforms from '../Platforms';
 import Header from '../Header';
-import Footer from '../Footer';
+import { TryBanner } from '@auth0/styleguide-react-components';
+import { Footer } from '@auth0/styleguide-react-components';
+import css from './App.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,6 +23,7 @@ class App extends React.Component {
       <div>
         <Header login={login} logout={logout} isAuth={isAuthenticated()} />
         <Platforms isAuth={isAuthenticated()} login={login} getProfile={getProfile} />
+        <TryBanner title="START YOUR FREE TRIAL TODAY" button="USE AUTH0 FOR FREE"/>
         <Footer />
       </div>
     );
