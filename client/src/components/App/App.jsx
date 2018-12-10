@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Platforms from '../Platforms';
 import Header from '../Header';
-import './App.css'
+import '../Main.css'
 import { TryBanner } from '@auth0/styleguide-react-components';
 import { Footer } from '@auth0/styleguide-react-components';
 

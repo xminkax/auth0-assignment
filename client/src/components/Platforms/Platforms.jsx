@@ -5,7 +5,6 @@ import Search from '../Search';
 import filter from './filter';
 import Loading from './Loading';
 import Links from './Links';
-import './Platforms.css'
 
 class Platforms extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -111,12 +110,14 @@ class Platforms extends React.Component {
     return (
       <div className="platforms">
         <Search onSearch={this.onSearch} />
-        <Links
-          onClickPlatforms={this.onClickPlatforms}
-          onClickFavouritePlatforms={this.onClickFavouritePlatforms}
-        />
-        {platforms === null && <Loading />}
-        {platforms !== null && <PlatformsList platforms={platforms} />}
+        <div className="platforms-content">
+          <Links
+            onClickPlatforms={this.onClickPlatforms}
+            onClickFavouritePlatforms={this.onClickFavouritePlatforms}
+          />
+          {platforms === null && <Loading />}
+          {platforms !== null && <PlatformsList platforms={platforms} />}
+        </div>
       </div>
     );
   }

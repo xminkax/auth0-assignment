@@ -3,11 +3,9 @@
   "name": "client",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts-with-stylus start src/components/**/*.styl",
-    "build": "react-scripts-with-stylus build src/components/**/*.styl",
+    "start": "react-scripts-with-stylus start src/components/Main.styl",
+    "build": "react-scripts-with-stylus build src/components/Main.styl",
     "test": "react-scripts test --env=jsdom",
-    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
-    "lint:scss:fix": "stylefmt --recursive 'src/**/*.scss'",
     "lint:js": "eslint . --ignore-path ./../.gitignore --ext .js,.jsx",
     "lint:js:fix": "npm run lint:js -- --fix",
     "lint": "npm run lint:js && npm run lint:scss"
