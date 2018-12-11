@@ -1,22 +1,22 @@
+@import '../../node_modules/@auth0/styleguide-core/src/vars/';
+
 header {
-  background-color: #22252e;
+  background-color: $bg-color-dark-blue;
   border-bottom: 1px solid hsla(0, 0%, 100%, .1);
 }
 
 .wrapper {
   width: auto;
   max-width: 1016px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin: 0 auto;
+  padding: 0 $padding-large-vertical;
   display: flex;
   align-items: center;
 }
 
 .menu {
-  margin-top: 41.5px;
-  margin-bottom: 41.5px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: row;
   width: calc(100% - 266px);
@@ -25,7 +25,7 @@ header {
 }
 
 .menu li {
-  margin: 0 15px;
+  margin: 0 $padding-large-vertical;
   cursor: pointer;
   display: flex;
 }
@@ -41,14 +41,6 @@ header {
   width: 8px;
 }
 
-.menu .toggle {
-  display: inline-block;
-  font-size: 10px;
-  margin-left: 6px;
-  position: relative;
-  bottom: 2px;
-}
-
 .icon-budicon-460 {
   font-size 9px;
   opacity 0.7;
@@ -62,28 +54,25 @@ header {
 }
 
 .menu .talk-button {
+  letter-spacing: normal;
   text-transform: none;
-  font-size: 14px;
   color: #bfbfbf !important;
   box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, .2) !important;
+  font-size: $font-size-base;
+  font-weight: 400;
 }
 
 .auth-buttons .signin-button, .logout {
-  color: #bfbfbf;
-  padding: 1em;
-  margin-right: 3px;
-  font-size: 14px;
-  font-weight: 400;
+  color: $color-text-contrast-light;
+  padding: 1rem;
+  margin-right: 4px;
+  font-weight: $font-weight-normal;
   border: 0;
   background-color: transparent;
   outline: none;
 }
 
 .auth-buttons .signup {
-  font-size: 11px;
-  padding: 8px 18px;
-}
-
-.auth-buttons .signin-button {
-  color: #bfbfbf;
+  font-size: $font-size-micro;
+  padding: $padding-base-vertical $padding-base-horizontal;
 }
