@@ -15,3 +15,70 @@
   .platforms-content {
     background-color: #f1f1f1;
   }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  margin: 3em;
+}
+
+ul.platforms-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.platforms-item {
+  margin: 10px;
+  box-sizing: border-box;
+  width: calc(25% - 20px);
+}
+
+.platforms-item .image{
+  max-height: 100%;
+  max-width: 75%;
+}
+
+.platforms-item .title {
+  font-size: 13px;
+  color: rgba(0,0,0,.54);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.platforms-item .content {
+  background: #fff;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+  border-radius: 4px;
+  background-clip: padding-box;
+  padding: 15px;
+  text-align: center;
+  transition: opacity .25s linear;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.asset-platform {
+  height: 60px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.platforms-list-container {
+  max-width: 1016px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.no-records {
+  display: flex;
+  justify-content: center;
+}
+
+.platforms-list-container
+  @media (min-width 992px)
+    width: 970px;
+

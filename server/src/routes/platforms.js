@@ -8,6 +8,7 @@ const getPlatforms = async () => {
   const environment = await contentfulClient.getEnvironment();
   const entries = await environment.getEntries({
     content_type: PLATFORM,
+    order:'fields.title'
   });
   const mapPlatformWithLocale = util.mapPlatform(LOCALE);
   return entries.items.map(mapPlatformWithLocale);

@@ -8,3 +8,5 @@ tree.json
 # misc
 .DS_Store
 .idea
+
+*.css

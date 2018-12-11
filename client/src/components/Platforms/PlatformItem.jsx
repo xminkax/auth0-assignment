@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import STYLES from './PlatformsItem.scss';
 
 const PlatformItem = ({ platform }) => {
   const { title, imageName } = platform;
   return (
-    <div>
-      <span>Title: {title}</span>
-      <span>
-        <img alt={imageName} className={STYLES.img} src={`../../assets/${imageName}.png`} />
-      </span>
-    </div>
+    <li className="platforms-item">
+      <div className="content">
+        <div className="asset-platform">
+          <img className="image" alt={imageName} src={`../../assets/${imageName}.png`} />
+        </div>
+        <div>
+          <span className="title">{title}</span>
+        </div>
+      </div>
+    </li>
   );
 };
 
