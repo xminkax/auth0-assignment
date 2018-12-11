@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Loading = () => (
-  <div>
-      Loading...
+  <div className="spinner-container">
+    <div className="spinner spinner-lg is-auth0">
+      <div className="circle" />
+    </div>
   </div>
 );
 

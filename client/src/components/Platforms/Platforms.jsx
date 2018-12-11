@@ -39,7 +39,7 @@ class Platforms extends React.Component {
       });
   }
 
-  onSearch(e) {
+  onSearch(e) { // eslint-disable-line react/sort-comp
     const searchValue = e.target.value.trim();
     this.filterPlatforms(searchValue);
   }
@@ -108,14 +108,16 @@ class Platforms extends React.Component {
       this.state.favouritePlatforms :
       this.state.platforms;
     return (
-      <div>
+      <div className="platforms">
         <Search onSearch={this.onSearch} />
-        <Links
-          onClickPlatforms={this.onClickPlatforms}
-          onClickFavouritePlatforms={this.onClickFavouritePlatforms}
-        />
-        {platforms === null && <Loading />}
-        {platforms !== null && <PlatformsList platforms={platforms} />}
+        <div className="content">
+          <Links
+            onClickPlatforms={this.onClickPlatforms}
+            onClickFavouritePlatforms={this.onClickFavouritePlatforms}
+          />
+          {platforms === null && <Loading />}
+          {platforms !== null && <PlatformsList platforms={platforms} />}
+        </div>
       </div>
     );
   }
@@ -124,7 +126,7 @@ class Platforms extends React.Component {
 export default Platforms;
 
 Platforms.propTypes = {
-  isAuth: PropTypes.bool.isRequired, // eslint-disable-line react/forbid-prop-types
-  login: PropTypes.func.isRequired, // eslint-disable-line react/forbid-prop-types
-  getProfile: PropTypes.func.isRequired, // eslint-disable-line react/forbid-prop-types
+  isAuth: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
 };

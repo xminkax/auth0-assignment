@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TryBanner, Footer } from '@auth0/styleguide-react-components';
 import Platforms from '../Platforms';
 import Header from '../Header';
-import Footer from '../Footer';
+import '../App.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,9 +19,10 @@ class App extends React.Component {
       isAuthenticated, getProfile, login, logout,
     } = this.props.auth;
     return (
-      <div>
+      <div className="app">
         <Header login={login} logout={logout} isAuth={isAuthenticated()} />
         <Platforms isAuth={isAuthenticated()} login={login} getProfile={getProfile} />
+        <TryBanner title="Start your free trial today" button="Use AUTH0 for free" />
         <Footer />
       </div>
     );
@@ -30,5 +32,5 @@ class App extends React.Component {
 export default App;
 
 App.propTypes = {
-  auth: PropTypes.func.isRequired, // eslint-disable-line react/forbid-prop-types
+  auth: PropTypes.func.isRequired,
 };
