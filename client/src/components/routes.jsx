@@ -12,7 +12,7 @@ const handleAuthentication = ({ location }) => {
   }
 };
 
-export const makeMainRoutes = () => (
+export const makeMainRoutes = () => ( // eslint-disable-line import/prefer-default-export
   <Router history={history}>
     <div>
       <Route

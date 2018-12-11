@@ -5,7 +5,7 @@ const PlatformItem = ({ platform }) => {
   const { title, imageName } = platform;
   return (
     <li className="platforms-item">
-      <div className="content">
+      <div className="wrapper">
         <div className="asset-platform">
           <img className="image" alt={imageName} src={`../../assets/${imageName}.png`} />
         </div>

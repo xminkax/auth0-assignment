@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlatformItem from './PlatformItem';
 
-const PlatformsList = ({platforms}) => (
-  <div className="platforms-list-container">
+const PlatformsList = ({ platforms }) => (
+  <div className="platforms-list-wrapper">
     {
       !platforms || platforms.length === 0 ?
         <div className="no-records"><h2>No records</h2></div> :
-        <ul className="platforms-list">
+        <ul className="list">
           {
             platforms.map(platform => (
-            <PlatformItem
-              platform={platform}
-            />))
+              <PlatformItem
+                platform={platform}
+              />))
           }
         </ul>
     }

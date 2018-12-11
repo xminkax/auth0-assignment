@@ -1,14 +1,9 @@
-.menu {
-  margin-top: 41.5px;
-  margin-bottom: 41.5px;
-  display: flex;
-  flex-direction: row;
-  width: calc(100% - 266px);
-  list-style: none;
-  align-items: center;
+header {
+  background-color: #22252e;
+  border-bottom: 1px solid hsla(0, 0%, 100%, .1);
 }
 
-.header-container {
+.wrapper {
   width: auto;
   max-width: 1016px;
   margin-right: auto;
@@ -19,33 +14,34 @@
   align-items: center;
 }
 
-header {
-  background-color: #22252e;
-
-  //background-color: rgba(0,0,0,.88);
-  //background-color: transparent;
-
-  border-bottom: 1px solid hsla(0, 0%, 100%, .1);
+.menu {
+  margin-top: 41.5px;
+  margin-bottom: 41.5px;
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 266px);
+  list-style: none;
+  align-items: center;
 }
 
-header li {
+.menu li {
   margin: 0 15px;
   cursor: pointer;
   display: flex;
 }
 
-.arrow {
+.menu span {
+  color: #bfbfbf;
+}
+
+.menu .arrow {
   position: relative;
   top: 8px;
   height: 4px;
   width: 8px;
 }
 
-header span {
-  color: #bfbfbf;
-}
-
-.toggle {
+.menu .toggle {
   display: inline-block;
   font-size: 10px;
   margin-left: 6px;
@@ -65,7 +61,14 @@ header span {
   height: 36px;
 }
 
-.auth-buttons .login, .logout {
+.menu .talk-button {
+  text-transform: none;
+  font-size: 14px;
+  color: #bfbfbf !important;
+  box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, .2) !important;
+}
+
+.auth-buttons .signin-button, .logout {
   color: #bfbfbf;
   padding: 1em;
   margin-right: 3px;
@@ -76,18 +79,11 @@ header span {
   outline: none;
 }
 
-.signup {
+.auth-buttons .signup {
   font-size: 11px;
   padding: 8px 18px;
 }
 
-.theme-dark .login {
+.auth-buttons .signin-button {
   color: #bfbfbf;
-}
-
-.menu-talk {
-  text-transform: none;
-  font-size: 14px;
-  color: #bfbfbf !important;
-  box-shadow: inset 0 0 0 1px hsla(0, 0%, 100%, .2) !important;
 }
