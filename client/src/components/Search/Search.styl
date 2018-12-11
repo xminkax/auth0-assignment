@@ -1,3 +1,5 @@
+@import '../../node_modules/@auth0/styleguide-core/src/mixins/';
+
 .banner {
   background-image: none;
   background-color: $bg-color-dark-blue;
@@ -13,11 +15,15 @@
 
 .banner h2 {
   color: hsla(0,0%,100%,.702);
+  font-size: $font-size-h3;
+  +breakpoint("desktop", "min") {
+    font-size: 40px;
+  }
 }
 
 .search {
-  font-size: 60px;
   text-align: left;
+  font-size: 23px;
   font-weight: $font-weight-light;
   background: transparent;
   width: 100%;
@@ -25,6 +31,14 @@
   outline: none;
   border-bottom: 1px solid hsla(0,0%,100%,.2);
   color: $color-text-white;
+  +breakpoint("tablet", "min") {
+    font-size: 30px;
+  }
+  +breakpoint("desktop", "min") {
+    font-size: 60px;
+  }
+
+
 }
 
 .search-container {
@@ -34,14 +48,24 @@
 }
 
 .search-container:before {
-  transform: scale(1);
-  bottom: 28px;
+  transform: scale(.5);
+  bottom: 2px;
   background:url("data:image/svg+xml;charset=utf-8,%3Csvg width='55' height='55' viewBox='0 0 55 55' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EImported Layers%3C/title%3E%3Cg stroke='%23FFF' stroke-width='3' fill='none' fill-rule='evenodd'%3E%3Cpath d='M38.514 38.514l14.384 14.384' stroke-linecap='round'/%3E%3Cpath d='M44.122 23.061c0 11.632-9.429 21.061-21.06 21.061C11.428 44.122 2 34.693 2 23.062 2 11.428 11.43 2 23.061 2c11.632 0 21.061 9.43 21.061 21.061z'/%3E%3C/g%3E%3C/svg%3E") no-repeat scroll 0 0 transparent
   width: 55px;
   height: 55px;
   content: "";
-  right: 0;
   position: absolute;
   speak: none;
+  right: -5px;
+  +breakpoint("tablet", "min") {
+    transform: scale(.8);
+    bottom: 10px;
+    right: 0px;
+  }
+  +breakpoint("desktop", "min") {
+    transform: scale(1);
+    bottom: 28px;
+    right: 0px;
+  }
 }
 

@@ -9,8 +9,18 @@ button.platforms {
   outline: none;
 }
 
+button.platforms, .separator {
+  font-size: $font-size-h4;
+
+  +breakpoint("tablet", "min") {
+    font-size: $font-size-h3;
+  }
+  +breakpoint("desktop", "min") {
+    font-size: $font-size-h2;
+  }
+}
+
 .separator {
   color: black;
-  font-size: 28px;
   font-weight: $font-weight-normal;
 }
