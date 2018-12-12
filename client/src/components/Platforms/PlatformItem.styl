@@ -1,37 +1,71 @@
-.platforms-item {
-  margin: $padding-small-horizontal;
-  box-sizing: border-box;
-  width: calc(25% - 20px);
-}
+.platforms-item 
+  margin 10px
+  box-sizing border-box
+  width calc(100% - 20px)
 
-.platforms-item .image{
-  max-height: 100%;
-  max-width: 75%;
-}
+  +breakpoint("tablet", "min") 
+    width calc(50% - 20px)
+  
+  +breakpoint("desktop", "min") 
+    width calc(25% - 20px)
 
-.platforms-item .title {
-  font-size: $font-size-base;
-  color: rgba(0,0,0,.54);
-  font-weight: $font-weight-normal;
-  line-height: 1.6;
-}
+  .wrapper
+    background #fff
+    box-shadow 0 0 3px 0 rgba(0,0,0,.2)
+    border-radius $border-radius-base
+    background-clip padding-box
+    padding $padding-large-vertical
+    text-align center
+    transition opacity .25s linear
+    display flex
+    justify-content space-between
+    align-items center
+    flex-direction column
 
-.platforms-item .wrapper {
-  background: #fff;
-  box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
-  border-radius: $border-radius-base;
-  background-clip: padding-box;
-  padding: $padding-large-vertical;
-  text-align: center;
-  transition: opacity .25s linear;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .asset-platform
+      height 60px
+      margin-top 10px
+      width 100%
+      +breakpoint("desktop", "min")
+        margin-bottom 20px
 
-.platforms-item .asset-platform {
-  height: 60px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  width: 100%;
-}
+      .image
+        max-height 100%
+        max-width 75%
+
+    .connections
+      display none
+      +breakpoint("desktop", "max")
+        display flex
+        width 100%
+
+      .btn
+        padding 14px 0
+        width 100%
+        border 0
+        font-size 11px
+
+    .title
+      display none
+      +breakpoint("desktop", "min")
+        font-size $font-size-micro
+        color $color-text-light
+        font-weight $font-weight-normal
+        line-height 1.6
+        display flex
+
+    .detail-title
+      display flex
+      font-size $font-size-small
+      width 100%
+      border 0
+      color $color-text-light
+      font-weight $font-weight-normal
+      line-height 1.6
+      text-transform capitalize
+      flex-direction column
+      margin-top 20px
+      margin-bottom 20px
+
+      +breakpoint("desktop", "min")
+        display none

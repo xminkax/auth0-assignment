@@ -5,7 +5,17 @@ const Header = ({ isAuth, login, logout }) => (
   <div>
     <header>
       <div className="wrapper">
-        <div><img className="logo" src="../../assets/logo-grey.png" alt="logo" /></div>
+
+        <h1 className="logo-wrapper">
+          <a href="/" className="logo"><span>Auth0</span></a>
+        </h1>
+
+        <button className="mobile-menu">
+          <span className="line" />
+          <span className="line" />
+          <span className="line" />
+        </button>
+
         <ul className="menu">
           <li>
             <span>Platform</span>
@@ -30,6 +40,7 @@ const Header = ({ isAuth, login, logout }) => (
             <button className="btn btn-transparent btn-sm talk-button">Talk to sales</button>
           </li>
         </ul>
+
         {
           !isAuth && (
             <div className="auth-buttons">
@@ -45,6 +56,7 @@ const Header = ({ isAuth, login, logout }) => (
               </button>
             </div>)
         }
+
       </div>
     </header>
   </div>

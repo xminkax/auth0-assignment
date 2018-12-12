@@ -1,16 +1,26 @@
-.links {
-  display: flex;
-  justify-content: center;
-}
+fontSizeLinks()
+  font-size $font-size-h4
+  +breakpoint("tablet", "min")
+    font-size $font-size-h3
+  +breakpoint("desktop", "min")
+    font-size $font-size-h2
 
-button.platforms {
-  border: 0;
-  background-color: transparent;
-  outline: none;
-}
+.links
+  display flex
+  justify-content center
 
-.separator {
-  color: black;
-  font-size: 28px;
-  font-weight: $font-weight-normal;
-}
+  h2
+    +breakpoint("tablet", "max")
+      margin 25px 0px
+
+    .platforms
+      fontSizeLinks()
+      border 0
+      background-color transparent
+      text-transform capitalize
+      outline none
+
+    .separator
+      fontSizeLinks()
+      color black
+      font-weight $font-weight-normal

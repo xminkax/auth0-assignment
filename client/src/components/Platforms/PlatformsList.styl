@@ -1,22 +1,20 @@
-.platforms-list-wrapper {
-  max-width: 1016px;
-  margin: 0 auto;
-  padding: 0 $padding-base-horizontal;
-}
-
 .platforms-list-wrapper
+  max-width 1016px
+  margin 0 auto
+  padding 0 $padding-base-horizontal
   @media (min-width 992px)
-    width: 970px;
+    width 970px
 
+  .no-records
+    display flex
+    justify-content center
 
-.platforms-list-wrapper .no-records {
-  display: flex;
-  justify-content: center;
-}
+    h2
+      +breakpoint("tablet", "max")
+        font-size $font-size-h3
 
-.platforms-list-wrapper .list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-}
+  .list
+    list-style none
+    display flex
+    flex-wrap wrap
+    padding 0

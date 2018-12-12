@@ -9,8 +9,10 @@ const PlatformItem = ({ platform }) => {
         <div className="asset-platform">
           <img className="image" alt={imageName} src={`../../assets/${imageName}.png`} />
         </div>
-        <div>
-          <span className="title">{title}</span>
+        <div className="title">{title}</div>
+        <div className="detail-title">Authenticate your {title} app</div>
+        <div className="connections">
+          <a className="btn btn-lg btn-success" href="/authenticate/react/bankid/">Show connections</a>
         </div>
       </div>
     </li>
