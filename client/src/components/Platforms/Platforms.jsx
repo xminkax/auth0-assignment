@@ -5,6 +5,8 @@ import Search from '../Search';
 import filter from './filter';
 import Loading from './Loading';
 import Links from './Links';
+// for prod would be defined config for different environments
+const URL = 'http://localhost:4000';
 
 class Platforms extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -31,7 +33,7 @@ class Platforms extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/platforms')
+    fetch(`${URL}/platforms`)
       .then(response => response.json())
       .then((platforms) => {
         this.setState({ platforms });
@@ -45,7 +47,7 @@ class Platforms extends React.Component {
   }
 
   getFavouritePlatforms(profile) {
-    fetch(`http://localhost:4000/favourite-platforms/${profile.sub}`)
+    fetch(`${URL}/favourite-platforms/${profile.sub}`)
       .then(response => response.json())
       .then((favouritePlatforms) => {
         this.setState({ favouritePlatforms, isFavouritePlatformsActive: true });

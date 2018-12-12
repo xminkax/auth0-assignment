@@ -3,9 +3,16 @@
   justify-content: center;
 }
 
+.links h2 {
+  +breakpoint("tablet", "max") {
+    margin: 25px 0px;
+  }
+}
+
 button.platforms {
   border: 0;
   background-color: transparent;
+  text-transform: capitalize;
   outline: none;
 }
 
