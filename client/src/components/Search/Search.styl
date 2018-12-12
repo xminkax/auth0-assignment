@@ -1,74 +1,64 @@
-@import '../../node_modules/@auth0/styleguide-core/src/mixins/';
-
-.banner {
-  background-image: none;
-  background-color: $bg-color-dark-blue;
-  max-width: 1016px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 $padding-large-horizontal;
-  +breakpoint("tablet", "max") {
-    padding: 0 15px;
-  }
-}
-
 .banner
-  @media (min-width 992px)
-    width: 970px;
+  background-image none
+  background-color $bg-color-dark-blue
+  max-width 1016px
+  margin-right auto
+  margin-left auto
+  padding $padding-large-horizontal $padding-large-horizontal
+  +breakpoint("tablet", "max")
+    padding 30px 15px 0 15px;
+  +breakpoint("desktop", "min")
+    width 970px
 
-.banner h2 {
-  color: hsla(0,0%,100%,.702);
-  font-size: $font-size-h3;
-  +breakpoint("desktop", "min") {
-    font-size: 40px;
-  }
-}
-
-.search {
-  text-align: left;
-  font-size: 23px;
-  font-weight: $font-weight-light;
-  background: transparent;
-  width: 100%;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid hsla(0,0%,100%,.2);
-  color: $color-text-white;
-  +breakpoint("tablet", "min") {
-    font-size: 30px;
-  }
-  +breakpoint("desktop", "min") {
-    font-size: 60px;
-  }
+  h1
+    font-size $font-size-h3
+    line-height 1.6
+    font-weight $font-weight-normal
+    margin 0 auto
+    +breakpoint("desktop", "min")
+      font-size 40px
 
 
-}
+  h2
+    color hsla(0,0%,100%,.702)
 
-.search-container {
-  width: 100%;
-  margin-top: 30px;
-  position: relative;
-}
+  .search-container
+    width 100%
+    margin-top $padding-large-horizontal
+    position relative
 
-.search-container:before {
-  transform: scale(.6);
-  bottom: 5px;
-  background:url("data:image/svg+xml;charset=utf-8,%3Csvg width='55' height='55' viewBox='0 0 55 55' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EImported Layers%3C/title%3E%3Cg stroke='%23FFF' stroke-width='3' fill='none' fill-rule='evenodd'%3E%3Cpath d='M38.514 38.514l14.384 14.384' stroke-linecap='round'/%3E%3Cpath d='M44.122 23.061c0 11.632-9.429 21.061-21.06 21.061C11.428 44.122 2 34.693 2 23.062 2 11.428 11.43 2 23.061 2c11.632 0 21.061 9.43 21.061 21.061z'/%3E%3C/g%3E%3C/svg%3E") no-repeat scroll 0 0 transparent
-  width: 55px;
-  height: 55px;
-  content: "";
-  position: absolute;
-  speak: none;
-  right: -5px;
-  +breakpoint("tablet", "min") {
-    transform: scale(.8);
-    bottom: 10px;
-    right: 0px;
-  }
-  +breakpoint("desktop", "min") {
-    transform: scale(1);
-    bottom: 28px;
-    right: 0px;
-  }
-}
+    &:before
+      transform scale(.6)
+      bottom 5px
+      background url("data:image/svg+xml;charset=utf-8,%3Csvg width='55' height='55' viewBox='0 0 55 55' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EImported Layers%3C/title%3E%3Cg stroke='%23FFF' stroke-width='3' fill='none' fill-rule='evenodd'%3E%3Cpath d='M38.514 38.514l14.384 14.384' stroke-linecap='round'/%3E%3Cpath d='M44.122 23.061c0 11.632-9.429 21.061-21.06 21.061C11.428 44.122 2 34.693 2 23.062 2 11.428 11.43 2 23.061 2c11.632 0 21.061 9.43 21.061 21.061z'/%3E%3C/g%3E%3C/svg%3E") no-repeat scroll 0 0 transparent
+      width 55px
+      height 55px
+      content ""
+      position absolute
+      speak none
+      right -5px
+      +breakpoint("tablet", "min")
+        transform scale(.8)
+        bottom $padding-small-horizontal
+        right 0px
 
+      +breakpoint("desktop", "min")
+        transform scale(1)
+        bottom 28px
+        right 0px
+
+    .search
+      text-align left
+      font-size 23px
+      font-weight $font-weight-light
+      background transparent
+      width 100%
+      border none
+      outline none
+      border-bottom 1px solid hsla(0,0%,100%,.2)
+      color $color-text-white
+      +breakpoint("tablet", "min")
+        font-size $font-size-h2
+
+      +breakpoint("desktop", "min")
+        font-size 60px

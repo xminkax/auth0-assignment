@@ -6,13 +6,13 @@ const Header = ({ isAuth, login, logout }) => (
     <header>
       <div className="wrapper">
 
-        <h1 className="logo">
+        <h1 className="logo-wrapper">
           <a href="/" className="logo"><span>Auth0</span></a>
         </h1>
 
         <button className="mobile-menu">
           <span className="line" />
-          <span className="line middle" />
+          <span className="line" />
           <span className="line" />
         </button>
 

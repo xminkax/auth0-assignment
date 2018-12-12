@@ -1,93 +1,71 @@
-.platforms-item {
-  //margin: 0;
-  margin: 10px;
-  box-sizing: border-box;
-  width: calc(100% - 20px);
+.platforms-item 
+  margin 10px
+  box-sizing border-box
+  width calc(100% - 20px)
 
-  +breakpoint("tablet", "min") {
-    width: calc(50% - 20px);
-  }
-  +breakpoint("desktop", "min") {
-    width: calc(25% - 20px);
-  }
-}
+  +breakpoint("tablet", "min") 
+    width calc(50% - 20px)
+  
+  +breakpoint("desktop", "min") 
+    width calc(25% - 20px)
 
-.platforms-item .connections {
-  display: none;
-  +breakpoint("desktop", "max") {
-    display: flex;
-    width: 100%;
-  }
-}
+  .wrapper
+    background #fff
+    box-shadow 0 0 3px 0 rgba(0,0,0,.2)
+    border-radius $border-radius-base
+    background-clip padding-box
+    padding $padding-large-vertical
+    text-align center
+    transition opacity .25s linear
+    display flex
+    justify-content space-between
+    align-items center
+    flex-direction column
 
-.connections .btn {
-  padding: 14px 0;
-  width: 100%;
-  border: 0;
-  font-size: 11px;
-}
+    .asset-platform
+      height 60px
+      margin-top 10px
+      width 100%
+      +breakpoint("desktop", "min")
+        margin-bottom 20px
 
-.platforms-item .image{
-  max-height: 100%;
-  max-width: 75%;
-}
+      .image
+        max-height 100%
+        max-width 75%
 
-.platforms-item .title {
-  display: none;
-  +breakpoint("desktop", "min") {
-    font-size: $font-size-base;
-    color: rgba(0,0,0,.54);
-    font-weight: $font-weight-normal;
-    line-height: 1.6;
-    display: flex;
-  }
-}
+    .connections
+      display none
+      +breakpoint("desktop", "max")
+        display flex
+        width 100%
 
-.platforms-item .detail-title {
-  display: flex;
-  font-size: 13px;
-  width: 100%;
-  border: 0;
-  color: rgba(0,0,0,.54);
-  font-weight: 400;
-  line-height: 1.6;
-  text-transform: capitalize;
-  flex-direction: column;
-  margin-top: 20px;
-  margin-bottom: 20px;
+      .btn
+        padding 14px 0
+        width 100%
+        border 0
+        font-size 11px
 
-  +breakpoint("desktop", "min") {
-    display: none;
-  }
-  //+breakpoint("tablet", "max") {
-  //  color: rgba(0,0,0,.54);
-  //  display: flex;
-  //  font-weight: $font-weight-normal;
-  //  line-height: 1.6;
-  //  width: 100%;
-  //  border: 0;
-  //}
+    .title
+      display none
+      +breakpoint("desktop", "min")
+        font-size $font-size-micro
+        color $color-text-light
+        font-weight $font-weight-normal
+        line-height 1.6
+        display flex
 
-}
+    .detail-title
+      display flex
+      font-size $font-size-small
+      width 100%
+      border 0
+      color $color-text-light
+      font-weight $font-weight-normal
+      line-height 1.6
+      text-transform capitalize
+      flex-direction column
+      margin-top 20px
+      margin-bottom 20px
 
-.platforms-item .wrapper {
-  background: #fff;
-  box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
-  border-radius: $border-radius-base;
-  background-clip: padding-box;
-  padding: $padding-large-vertical;
-  text-align: center;
-  transition: opacity .25s linear;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.platforms-item .asset-platform {
-  height: 60px;
-  margin-top: 10px;
-  width: 100%;
-  +breakpoint("desktop", "min") {
-    margin-bottom: 20px;
-  }
-}
+      +breakpoint("desktop", "min")
+        display none

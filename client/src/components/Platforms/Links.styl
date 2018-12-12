@@ -1,33 +1,26 @@
-.links {
-  display: flex;
-  justify-content: center;
-}
+fontSizeLinks()
+  font-size $font-size-h4
+  +breakpoint("tablet", "min")
+    font-size $font-size-h3
+  +breakpoint("desktop", "min")
+    font-size $font-size-h2
 
-.links h2 {
-  +breakpoint("tablet", "max") {
-    margin: 25px 0px;
-  }
-}
+.links
+  display flex
+  justify-content center
 
-button.platforms {
-  border: 0;
-  background-color: transparent;
-  text-transform: capitalize;
-  outline: none;
-}
+  h2
+    +breakpoint("tablet", "max")
+      margin 25px 0px
 
-button.platforms, .separator {
-  font-size: $font-size-h4;
+    .platforms
+      fontSizeLinks()
+      border 0
+      background-color transparent
+      text-transform capitalize
+      outline none
 
-  +breakpoint("tablet", "min") {
-    font-size: $font-size-h3;
-  }
-  +breakpoint("desktop", "min") {
-    font-size: $font-size-h2;
-  }
-}
-
-.separator {
-  color: black;
-  font-weight: $font-weight-normal;
-}
+    .separator
+      fontSizeLinks()
+      color black
+      font-weight $font-weight-normal
