@@ -25,7 +25,7 @@ class Platforms extends React.Component {
       searchValue: '',
     };
 
-    this.isLoadingFavouritePlatforms = false;
+    this.loadingStartedFavouritePlatforms = false;
 
     this.onSearch = this.onSearch.bind(this);
     this.onClickPlatforms = this.onClickPlatforms.bind(this);
@@ -36,14 +36,11 @@ class Platforms extends React.Component {
     // this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
   }
 
-  componentDidMount() {
-    this.isLoadingPlatforms = true;
-    fetch(`${URL}/platforms`)
-      .then(response => response.json())
-      .then((platforms) => {
-        this.setState({ platforms });
-        this.defaultPlatforms = platforms;
-      });
+  async componentDidMount() {
+    const response = await fetch(`${URL}/platforms`);
+    const platforms = await response.json();
+    this.setState({ platforms }); // eslint-disable-line react/no-did-mount-set-state
+    this.defaultPlatforms = platforms;
   }
 
   onSearch(e) { // eslint-disable-line react/sort-comp
@@ -51,23 +48,20 @@ class Platforms extends React.Component {
     this.filterPlatforms(searchValue);
   }
 
-  getFavouritePlatforms(profile) {
-    this.isLoadingFavouritePlatforms = true;
-    fetch(`${URL}/favourite-platforms/${profile.sub}`)
-      .then(response => response.json())
-      .then((favouritePlatforms) => {
-        this.setState({ favouritePlatforms, isFavouritePlatformsActive: true });
-        this.defaultFavouritePlatforms = favouritePlatforms;
-        this.isLoadingFavouritePlatforms = false;
-      });
+  async getFavouritePlatforms(profile) {
+    const response = await fetch(`${URL}/favourite-platforms/${profile.sub}`);
+    const favouritePlatforms = await response.json();
+    this.setState({ favouritePlatforms, isFavouritePlatformsActive: true });
+    this.defaultFavouritePlatforms = favouritePlatforms;
   }
 
   componentDidUpdate() {
     if (
       this.props.isAuth &&
       this.state.favouritePlatforms === null &&
-      !this.isLoadingFavouritePlatforms
+      !this.loadingStartedFavouritePlatforms
     ) {
+      this.loadingStartedFavouritePlatforms = true;
       this.props.getProfile(this.getFavouritePlatforms);
     }
   }
