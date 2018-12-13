@@ -107,7 +107,7 @@ const getPlatforms = async (userId) => {
   const favouritePlatforms = await environment.getEntries({
     content_type: PLATFORM,
     'sys.id[in]': favouritePlatformsId.join(','),
-    order:'fields.title'
+    order: 'fields.title',
   });
   const mapPlatformWithLocale = util.mapPlatform(LOCALE);
   return favouritePlatforms.items.map(mapPlatformWithLocale);

@@ -25,14 +25,19 @@ class Platforms extends React.Component {
       searchValue: '',
     };
 
+    this.isLoadingFavouritePlatforms = false;
+
     this.onSearch = this.onSearch.bind(this);
     this.onClickPlatforms = this.onClickPlatforms.bind(this);
     this.onClickFavouritePlatforms = this.onClickFavouritePlatforms.bind(this);
     this.getFavouritePlatforms = this.getFavouritePlatforms.bind(this);
+    // I was playing with debounce but this would be more useful
+    // if we would have a lot of data or async call to fetch
     // this.filterPlatforms = debounce(this.filterPlatforms.bind(this), 500);
   }
 
   componentDidMount() {
+    this.isLoadingPlatforms = true;
     fetch(`${URL}/platforms`)
       .then(response => response.json())
       .then((platforms) => {
@@ -47,16 +52,22 @@ class Platforms extends React.Component {
   }
 
   getFavouritePlatforms(profile) {
+    this.isLoadingFavouritePlatforms = true;
     fetch(`${URL}/favourite-platforms/${profile.sub}`)
       .then(response => response.json())
       .then((favouritePlatforms) => {
         this.setState({ favouritePlatforms, isFavouritePlatformsActive: true });
         this.defaultFavouritePlatforms = favouritePlatforms;
+        this.isLoadingFavouritePlatforms = false;
       });
   }
 
   componentDidUpdate() {
-    if (this.props.isAuth && this.state.favouritePlatforms === null) {
+    if (
+      this.props.isAuth &&
+      this.state.favouritePlatforms === null &&
+      !this.isLoadingFavouritePlatforms
+    ) {
       this.props.getProfile(this.getFavouritePlatforms);
     }
   }
