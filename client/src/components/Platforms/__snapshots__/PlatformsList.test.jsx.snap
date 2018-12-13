@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders platforms list 1`] = `
+<div
+  className="platforms-list-wrapper"
+>
+  <ul
+    className="list"
+  >
+    <li
+      className="platforms-item"
+    >
+      <div
+        className="wrapper"
+      >
+        <div
+          className="asset-platform"
+        >
+          <img
+            alt="android"
+            className="image"
+            src="../../assets/android.png"
+          />
+        </div>
+        <div
+          className="title"
+        >
+          Android
+        </div>
+        <div
+          className="detail-title"
+        >
+          Authenticate your 
+          Android
+           app
+        </div>
+        <div
+          className="connections"
+        >
+          <a
+            className="btn btn-lg btn-success"
+            href="/authenticate/react/bankid/"
+          >
+            Show connections
+          </a>
+        </div>
+      </div>
+    </li>
+    <li
+      className="platforms-item"
+    >
+      <div
+        className="wrapper"
+      >
+        <div
+          className="asset-platform"
+        >
+          <img
+            alt="angular"
+            className="image"
+            src="../../assets/angular.png"
+          />
+        </div>
+        <div
+          className="title"
+        >
+          Angular 2+
+        </div>
+        <div
+          className="detail-title"
+        >
+          Authenticate your 
+          Angular 2+
+           app
+        </div>
+        <div
+          className="connections"
+        >
+          <a
+            className="btn btn-lg btn-success"
+            href="/authenticate/react/bankid/"
+          >
+            Show connections
+          </a>
+        </div>
+      </div>
+    </li>
+    <li
+      className="platforms-item"
+    >
+      <div
+        className="wrapper"
+      >
+        <div
+          className="asset-platform"
+        >
+          <img
+            alt="angular"
+            className="image"
+            src="../../assets/angular.png"
+          />
+        </div>
+        <div
+          className="title"
+        >
+          AngularJs
+        </div>
+        <div
+          className="detail-title"
+        >
+          Authenticate your 
+          AngularJs
+           app
+        </div>
+        <div
+          className="connections"
+        >
+          <a
+            className="btn btn-lg btn-success"
+            href="/authenticate/react/bankid/"
+          >
+            Show connections
+          </a>
+        </div>
+      </div>
+    </li>
+    <li
+      className="platforms-item"
+    >
+      <div
+        className="wrapper"
+      >
+        <div
+          className="asset-platform"
+        >
+          <img
+            alt="python"
+            className="image"
+            src="../../assets/python.png"
+          />
+        </div>
+        <div
+          className="title"
+        >
+          Django
+        </div>
+        <div
+          className="detail-title"
+        >
+          Authenticate your 
+          Django
+           app
+        </div>
+        <div
+          className="connections"
+        >
+          <a
+            className="btn btn-lg btn-success"
+            href="/authenticate/react/bankid/"
+          >
+            Show connections
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

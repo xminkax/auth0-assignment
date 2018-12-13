@@ -11,6 +11,7 @@ const PlatformsList = ({ platforms }) => (
           {
             platforms.map(platform => (
               <PlatformItem
+                key={platform.id}
                 platform={platform}
               />))
           }
@@ -22,5 +23,5 @@ const PlatformsList = ({ platforms }) => (
 export default PlatformsList;
 
 PlatformsList.propTypes = {
-  platforms: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  platforms: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
 };

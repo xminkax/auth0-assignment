@@ -32,5 +32,5 @@ class App extends React.Component {
 export default App;
 
 App.propTypes = {
-  auth: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
