@@ -14,10 +14,11 @@ from root directory
 ## Follow up section - what I would improve if it would go on production
 ### General
 - different configs for prod/dev environment for contentful client or url on the client side to get platforms
-- better error handling and play more around more verbose status codes + messages
-- logs + metrics to monitor API requests
+- better API error handling and play more around more verbose status codes + messages
 - error handling on the front-end for non 200 codes from API
+- logs + metrics to monitor API requests
 - use css modules for stylus to scope class names locally
+- better cross browser testing, I checked safari, chrome, firefox new versions only and simulators for mobile, tablet and real iphone device
 
 ### Server side rendering
 - to optimize web page for SEO and performance (e.g: First interaction time) add server side rendering
