@@ -19,6 +19,7 @@ from root directory
 - logs + metrics to monitor API requests
 - use css modules for stylus to scope class names locally
 - better cross browser testing, I checked safari, chrome, firefox new versions only and simulators for mobile, tablet and real iphone device
+- better test coverage
 
 ### Server side rendering
 - to optimize web page for SEO and performance (e.g: First interaction time) add server side rendering
