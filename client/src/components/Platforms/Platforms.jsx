@@ -67,18 +67,21 @@ class Platforms extends React.Component {
   }
 
   filterPlatforms(searchValue) {
-    const defaultStatePlatforms = this.state.isFavouritePlatformsActive ?
-      { favouritePlatforms: this.defaultFavouritePlatforms } :
-      { platforms: this.defaultPlatforms };
+    let defaultStatePlatforms;
+    let platforms;
+
+    if (this.state.isFavouritePlatformsActive) {
+      defaultStatePlatforms = { favouritePlatforms: this.defaultFavouritePlatforms };
+      platforms = this.defaultFavouritePlatforms;
+    } else {
+      defaultStatePlatforms = { platforms: this.defaultPlatforms };
+      platforms = this.defaultPlatforms;
+    }
 
     if (!searchValue) {
       this.setState(Object.assign(defaultStatePlatforms, { searchValue: '' }));
       return;
     }
-
-    const platforms = this.state.isFavouritePlatformsActive ?
-      this.state.favouritePlatforms :
-      this.state.platforms;
 
     const filtered = filter(searchValue, platforms);
 
